@@ -31,6 +31,14 @@ SLIDER
 			infinite:false,
 			slide: '.ba-slider__slide'
 		});
+
+
+		$('.ba-team__slider').slick({
+		  infinite: true,
+		  slidesToShow: 3,
+		  slidesToScroll: 3,
+		  slide: '.ba-team__slider__slide'
+		});
 	});
 
 })(jQuery);

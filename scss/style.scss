@@ -15,6 +15,7 @@ body {
 	color:  #fff;
 	transition: all .3 ease;
 	background-color: #EBEBEB;
+	overflow-X: hidden;
 }
 
 .ba-container {
@@ -53,9 +54,7 @@ INTRO
 	.top-bar {
 		background-color: transparent;
 		.menu {
-
 			background-color: transparent;
-
 			a {
 				padding-top: 21px;
 				font-size: 22px;
@@ -63,6 +62,7 @@ INTRO
 				padding-left: 15px;
 				color: #fff;
 				letter-spacing: 1px;
+				transition: all .3 ease-in;
 				&:hover {
 					color: #000;
 				}
@@ -140,67 +140,82 @@ SERVICES
 **************************************/
 .ba-services {
 	color: #665F60;
-	&__sq {
-		padding: 90px 0 140px;
-		width: 380px;
-		height: 400px;
-		p {
+	display: flex;
+	justify-content: space-around;
+	align-items: stretch;
+	flex-wrap: wrap;
+	&__column {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		flex-basis: 380px;
+		@media (max-width: 1200px) {
+				&:last-child {
+				order: -1;
+			}
+			flex-basis: 300px;
+		}
+	}
+	&__info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex-grow: 2;
+		color: #FFF;
+		padding: 0 20px 50px;
+		background: #DBDBDB url(../img/servisces.jpg) 50% no-repeat;
+		h5 {
+			padding-top: 140px;
+			background: url(../img/icon-services.png) 50% no-repeat;
+		}
+		blockquote {
 			font-style: italic;
+			color: #FFF;
 		}
 	}
 	&__graphic {
+
+		padding: 40px 20px 90px;
 		background-color: #DBDBDB;
 		h6 {
-			padding-top: 90px;
+			padding-top: 140px;
 			background: url(../img/icon-graphic.png) 50% no-repeat;
 		}
 	}
 	&__web {
+		padding: 40px 20px 90px;
 		h6 {
-			padding-top: 90px;
+			padding-top: 140px;
 			background: url(../img/icon-web.png) 50% no-repeat;
 		}
 	}
 	&__seo {
+		padding: 40px 20px 90px;
 		h6 {
-			padding-top: 90px;
+			padding-top: 140px;
 			background: url(../img/icon-seo.png) 50% no-repeat;
 		}
 	}
 	&__mobile {
+		padding: 40px 20px 90px;
 		background-color: #DBDBDB;
 		h6 {
-			padding-top: 90px;
+			padding-top: 140px;
 			background: url(../img/icon-mobile.png) 50% no-repeat;
 		}
 	}
-	&__img {
-		width: 410px;
-		height: 800px;
-		padding-bottom: 380px;
-		padding-top: 90px;
-		color: #fff;
-		background: #DBDBDB url(../img/servisces.jpg) 50% no-repeat;
-		h5 {
-			padding-top: 90px;
-			background: url(../img/icon-services.png) 50% no-repeat;
-		}
-		p {
-			padding-top: 90px;
-			padding-left: 30px;
-			padding-right: 30px;
+	p {
 			font-style: italic;
-		}
 	}
-
 }
+
+
+
 
 /**************************************
 SLIDER WORKS
 **************************************/
 .ba-works {
-	text-align: center;
-	//height: 100vh;
 	padding: 0 0 60px;
 	background: #B3B1D5 url(../img/slider-bg.jpg) 50% no-repeat;
 	&__container {
@@ -226,25 +241,212 @@ SLIDER WORKS
 @import "slick.scss";
 @import "_slider.scss";
 
+/**************************************
+SLIDER TEAM
+**************************************/
+
+.ba-team {
+	padding: 50px 0 90px;
+	&__title {
+		color: $primary-color;
+		font-weight: 600;
+		padding-top: 150px;
+		margin-bottom: 140px;
+		background: url(../img/icon-team.png) 50% no-repeat;
+	}
+	&__info {
+		max-width: 350px;
+		color: $primary-color;
+		background-color: #FFF;
+		position: relative;
+		img {
+			position: absolute;
+			top: -130px;
+			left: 45px;
+			border-radius: 50%;
+		}
+	}
+	&__name {
+		padding-top: 160px;
+		padding-bottom: 20px;
+		font-weight: 600;
+		color: #9F9ACF;
+	}
+	&__position {
+		font-style: italic;
+		padding-bottom: 50px;
+	}
 
 
 
-
+	&__social {
+		text-align: center;
+		background-color: #9F9ACF;
+		min-height: 70px;
+		margin: 0;
+		width: 100%;
+		ul {
+			margin-left: 0;
+			li {
+				list-style: none;
+				display: inline-block;
+				a {
+					line-height: 70px;
+					border: 2px solid transparent;
+				}
+				svg {
+					vertical-align: middle;
+					border-radius: 50%;
+					border: 2px solid transparent;
+				}
+				svg:hover {
+					border: 2px solid #e6e6e6;
+				}
+			}
+		}
+	}
+}
 /**************************************
 MAP
 **************************************/
 .ba-map {
-	height: 100vh;
-	z-index: 0;
 	position: relative;
-	&__all {
+	&__map {
+		height: 900px;
+		position: relative;
+		&:after {
+			position: absolute;
+			content: "";
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-color: rgba(#9F9ACF, .5);
+		}
+	}
+	&__overlay {
 		position: absolute;
-		height: 100vh;
-		width: 100%;
-		z-index: 2;
-		background-color: rgba(#52506C, .2);
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+	&__title {
+		padding-top: 140px;
+		margin-bottom: 270px;
+		font-weight: 900;
+		background: url(../img/mark.png) 50% no-repeat;
+	}
+	&__form {
+		max-width: 920px;
+		margin: 0 auto;
+		padding-left: 25px;
+		padding-right: 25px;
+		input, textarea{
+			color: #FFF;
+		}
+		input, input:focus,
+		textarea{
+			background-color: rgba(#fff, .3);
+			border-radius: 3px;
+		}
+		input::-webkit-input-placeholder,
+		textarea::-webkit-input-placeholder {
+			color: #fff;
+		}
+		textarea:focus,
+		input:focus {
+			border-color: #9F9ACF;
+		}
+
+		button {
+			background-color: #9F9ACF;
+			color: #fff;
+			padding: 25px 66px;
+			border-bottom: 4px solid #8783B0;
+			border-radius: 3px;
+			&:hover {
+				background-color: lighten(#9F9ACF, 5%) ;
+			}
+		}
+	}
+	&__address {
+		position: absolute;
+		z-index: 3;
+		top: 220px;
+		right: 0;
+		height: 90px;
+		width: 360px;
+		background-color: rgba(#fff, .7);
+		display: inline-flex;
+		color: #8783B0;
+		transition: transform .4s ease;
+		transform: translateX(270px);
+		&:hover {
+			transform: translateX(0px);
+		}
+		&__button {
+			width: 90px;
+			background: #9F9ACF url(../img/address.png) 50% no-repeat;
+		}
+		&__area {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding-left: 10px;
+			padding-right: 10px;
+			width: 270px;
+			text-align: center;
+		}
+	}
+
+	&__phone {
+		position: absolute;
+		z-index: 3;
+		top: 310px;
+		right: 0;
+		height: 90px;
+		width: 360px;
+		background-color: rgba(#fff, .7);
+		display: inline-flex;
+		color: #8783B0;
+		transition: transform .4s ease;
+		transform: translateX(270px);
+		&:hover {
+			transform: translateX(0px);
+		}
+		&__button {
+			width: 90px;
+			background: #9F9ACF url(../img/phone.png) 50% no-repeat;
+		}
+		&__area {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding-left: 10px;
+			padding-right: 10px;
+			width: 270px;
+		}
+	}
+
+
+	&__top-button {
+		position: absolute;
+		z-index: 3;
+		bottom: 50px;
+		right: 50px;
+		height: 85px;
+		width: 85px;
+		background-color: rgba(#9F9ACF, .5);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&:hover {
+			background-color: rgba(#9F9ACF, .8);
+		}
 	}
 }
+
 
 
 /**************************************
